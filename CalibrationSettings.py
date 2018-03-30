@@ -7,8 +7,10 @@ ALPHA = 0.05             # significance level for calculating confidence interva
 NUM_SIM_COHORTS = 500   # number of simulated cohorts used to calculate prediction intervals
 
 # details of a clinical study estimating the mean survival time
-OBS_N = 573 # number of patients involved in the study
-OBS_K = 400 # number of patients who survived past 5 years
+OBS_N = 573
+OBS_N_P6 = 1146# number of patients involved in the study
+OBS_K = 400
+OBS_K_P6 = 800# number of patients who survived past 5 years
 OBS_HL = 1.5      # half-length
 OBS_ALPHA = 0.05   # significance level
 # the standard deviation of the mean survival time reported in the clinical study

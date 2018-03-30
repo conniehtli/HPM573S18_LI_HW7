@@ -56,8 +56,8 @@ class Calibration:
             # with mean calculated from the simulated data and standard deviation from the clinical study.
             # evaluate this pdf (probability density function) at the mean reported in the clinical study.
             weight = stat.binom.pmf(
-                n=CalibSets.OBS_N,
-                k=CalibSets.OBS_K,
+                n=CalibSets.OBS_N_P6,
+                k=CalibSets.OBS_K_P6,
                 p=proportion,
                 loc=0)
 
@@ -193,7 +193,7 @@ Calib = Calibration()
 
 Calib.sample_posterior()
 
-print('Estimate of mortality probability and {:.{prec}%} projection interval:'.format(1 - CalibSets.ALPHA, prec=0),
+print('Estimated annual mortality probability and {:.{prec}%} projection interval:'.format(1 - CalibSets.ALPHA, prec=0),
       Calib.get_mortality_estimate_credible_interval(CalibSets.ALPHA, deci=4))
 
 calibrated_model = CalibratedModel('CalibrationResults.csv')
@@ -203,3 +203,6 @@ calibrated_model.simulate(CalibSets.NUM_SIM_COHORTS, CalibSets.SIM_POP_SIZE, Cal
 print('Mean survival time and {:.{prec}%} projection interval:'.format(1 - CalibSets.ALPHA, prec=0),
       calibrated_model.get_mean_survival_time_proj_interval(CalibSets.ALPHA, deci=4))
 
+print('The credible interval of the estimated annual mortality probability and '
+      'the projection interval of the mean survival time both became more narrow '
+      'as the number of participants increased.')

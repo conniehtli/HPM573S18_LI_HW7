@@ -188,14 +188,15 @@ class CalibratedModel:
 
         return FormatSupport.format_estimate_interval(mean, proj_interval, deci)
 
-
+print('--------------------Problem 4-----------------------')
 Calib = Calibration()
 
 Calib.sample_posterior()
 
-print('Estimate of mortality probability and {:.{prec}%} projection interval:'.format(1 - CalibSets.ALPHA, prec=0),
+print('Estimated annual mortality probability and {:.{prec}%} projection interval:'.format(1 - CalibSets.ALPHA, prec=0),
       Calib.get_mortality_estimate_credible_interval(CalibSets.ALPHA, deci=4))
 
+print('--------------------Problem 5-----------------------')
 calibrated_model = CalibratedModel('CalibrationResults.csv')
 
 calibrated_model.simulate(CalibSets.NUM_SIM_COHORTS, CalibSets.SIM_POP_SIZE, CalibSets.TIME_STEPS)
